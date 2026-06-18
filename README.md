@@ -1,73 +1,181 @@
-# React + TypeScript + Vite
+# 🌐 API Consumer Data App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[🇺🇸 English](./README.md) | [🇧🇷 Português](./README.pt-br.md)
 
-Currently, two official plugins are available:
+A responsive web application built with **React** and **TypeScript** to demonstrate REST API integration, asynchronous data fetching, state management, and responsive interface development. The application retrieves data from an external API and presents it in a clean, user-friendly interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📸 Demo
 
-## React Compiler
+<p align="center">
+  <img src="./src/assets/demo.png" alt="Project Demo" width="800">
+</p>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* 🌐 Integration with an external REST API.
+* ⚡ Asynchronous data fetching using `async/await`.
+* 🔄 Loading indicators during requests.
+* ❌ Error handling with user-friendly feedback.
+* 🔍 Dynamic search and filtering *(if applicable)*.
+* 📱 Fully responsive interface.
+* 🔄 Automatic rendering of API data.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Technologies
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* React 18/19
+* TypeScript
+* Fetch API
+* Vite
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/
+├── components/
+│   └── PokemonCard.tsx
+├── interfaces/
+│   └── Pokemon.ts
+├── services/
+│   └── api.ts
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💡 Technical Concepts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+This project focuses on applying best practices for consuming REST APIs in React applications.
+
+### State Management & Form Actions (React 19)
+
+This project leverages the modern capabilities of **React 19**, specifically the `useActionState` hook, completely eliminating the need for traditional `useState` and `useEffect` for data fetching.
+
+```tsx
+const [state, formAction, isPending] = useActionState(
+  async (_prevState: SearchState, formData: FormData) => {
+    const query = formData.get('searchQuery') as string;
+    // Data fetching logic here...
   },
-])
+  initialState
+);
 ```
+
+### Type Safety
+
+All API responses are typed using TypeScript interfaces, ensuring predictable data structures and reducing runtime errors.
+
+```ts
+interface Data {
+  id: number;
+  name: string;
+  sprites: { front_Default: string };
+  types: PokemonType[];
+}
+```
+
+### API Consumption
+
+The application communicates with a REST API using either the native **Fetch API**, depending on the project's configuration.
+
+---
+
+## 🎨 Responsive Design
+
+The interface was designed with a mobile-first approach, ensuring a consistent experience across desktops, tablets, and smartphones.
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/paullo-ps/consome-api-publica.git
+```
+
+### Navigate to the project folder
+
+```bash
+cd consome_api_publica
+```
+
+### Install dependencies
+
+**Using npm**
+
+```bash
+npm install
+```
+
+**Using Yarn**
+
+```bash
+yarn
+```
+
+### Start the development server
+
+**Using npm**
+
+```bash
+npm run dev
+```
+
+**Using Yarn**
+
+```bash
+yarn dev
+```
+
+The application will be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 📚 What I Learned
+
+This project helped reinforce my knowledge of:
+
+* REST API integration
+* Asynchronous JavaScript
+* TypeScript
+* State management
+* Error handling
+* Loading states
+* Component-based architecture
+* Responsive design
+* Front-end development best practices
+
+---
+
+## 🔮 Future Improvements
+
+* Pagination.
+* Infinite scrolling.
+* API caching.
+* Authentication.
+* Dark mode.
+* Unit tests with Vitest and React Testing Library.
+* Debounced search.
+* Request cancellation using `AbortController`.
+* Environment variables for API configuration.
+
+---
+
+## 👨‍💻 Author
+
+**Paulo Sérgio Mendes dos Santos**
+
+* GitHub: https://github.com/paullo-ps
+* LinkedIn: https://www.linkedin.com/in/paulo-s%C3%A9rgio-mendes-dos-santos-914a29200/

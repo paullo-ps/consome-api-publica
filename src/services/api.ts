@@ -1,9 +1,10 @@
-import type { Pokemon } from "../types/pokemon";
+const BASE_URL = 'https://pokeapi.co/api/v2';
 
-export const getPokemon = async (pokemonName: string): Promise<Pokemon> => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
+export const api = {
+    getPokemon: async (nameOrId: string | number)=> {
+        const response = await fetch(`${BASE_URL}/pokemon/${nameOrId}`);
 
-    if (!response.ok) throw new Error('Pokemon não encontrado!');
-    const data = await response.json();
-    return data;
-}
+        if (!response.ok) throw new Error('Pokémon não encontrado!');
+        return response.json();
+    }
+};
