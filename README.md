@@ -7,7 +7,11 @@ A responsive web application built with **React** and **TypeScript** to demonstr
 ## 📸 Demo
 
 <p align="center">
-  <img src="./src/assets/demo.png" alt="Project Demo" width="800">
+  <img src="./src/assets/1.png" alt="Project Demo" width="800">
+</p>
+
+<p align="center">
+  <img src="./src/assets/2.png" alt="Project Demo" width="800">
 </p>
 
 ---
